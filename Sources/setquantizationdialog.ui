@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>setQuantizationDialog</class>
+ <widget class="QDialog" name="setQuantizationDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>291</width>
+    <height>259</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Setting quantization</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="radarFrequency">
+     <property name="title">
+      <string>Radar frequency</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="radar45GHz">
+        <property name="text">
+         <string>4.5 GHz</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">radarFrequencySelection</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radar695GHz">
+        <property name="text">
+         <string>6.95 GHz</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">radarFrequencySelection</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radar99GHz">
+        <property name="text">
+         <string>9.9 GHz</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">radarFrequencySelection</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radar13GHz">
+        <property name="text">
+         <string>13.0 GHz</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">radarFrequencySelection</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QRadioButton" name="radarCustomGHz">
+       <property name="text">
+        <string>Custom frequency [GHz]</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">radarFrequencySelection</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="customFrequencySpinBox">
+       <property name="minimum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>25.989999999999998</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="confirmButton">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>confirmButton</sender>
+   <signal>accepted()</signal>
+   <receiver>setQuantizationDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>confirmButton</sender>
+   <signal>rejected()</signal>
+   <receiver>setQuantizationDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="quantizationTypeButtonGroup"/>
+  <buttongroup name="radarFrequencySelection"/>
+ </buttongroups>
+</ui>

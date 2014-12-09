@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/mainPics">
+        <file>pics/radar_pic.png</file>
+        <file>pics/signal_pic.png</file>
+        <file>pics/antennas_deployment.jpg</file>
+    </qresource>
+</RCC>
