@@ -38,6 +38,11 @@ void transformation2D::convertToRadians(double angle)
     this->rotAngle = angle*(this->PI/180);
 }
 
+double transformation2D::getDegrees(double angle)
+{
+    return angle*(180.0/this->PI);
+}
+
 void transformation2D::buildRotationMatrix()
 {
     if(rotationMatrix!=NULL) this->deleteMatrix(rotationMatrix);
@@ -125,8 +130,27 @@ void transformation2D::setUpNewSystemPosition(double x, double y)
 
 bool transformation2D::isBehindRadar(double Xcor, double Ycor)
 {
-    double tang = tan(rotAngle);
+    double considered_angle = rotAngle;
+    double tang = tan(considered_angle);
+
+    considered_angle = getDegrees(considered_angle);
+
+    if(considered_angle<0.0) considered_angle *= (-1.0);
+
+    if((considered_angle>(180.0-1.0) && considered_angle<(180.0+1.0)) ||
+            (considered_angle>(90.0-1.0) && considered_angle<(90.0+1.0)) ||
+            (considered_angle>(0.0-1.0) && considered_angle<(0.0+1.0)) ||
+            (considered_angle>(270.0-1.0) && considered_angle<(270.0+1.0)))
+    { return false; } // because it is impossible to see nothing according to our scene
+
     double pos = tang*(Xcor-A1) + A2;
+
+
+    if(considered_angle>90.0 && considered_angle<270.0)
+    {
+        if(Ycor>pos) return true;
+        else return false;
+    }
     if(Ycor<pos) return true;
     return false;
 }

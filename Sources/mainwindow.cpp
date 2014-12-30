@@ -400,8 +400,10 @@ void MainWindow::generateSimulationFilesSlot()
             radarWrite <<  z << "#" << cur_time; //<< "#" << routesCount;
 
             int target_counter = 0;
+            qDebug() << "INDEX: " << z;
             Q_FOREACH(class routemath *route, routesMath)
             {
+                qDebug() << "TEST";
                 if(!radarTransformationObjects.at(z)->isBehindRadar(route->getNewX(), route->getNewY())) target_counter++;
             }
 
@@ -1122,7 +1124,6 @@ double MainWindow::quantizeNumber(double num)
       *
       **/
 
-    qDebug() << "Considered num: " << num << " quantizer: " << this->quantization;
 
     double productor = 1000.0; // we will use 3 decimals of quantization number -> x decimals use productor=10^x
     int quantization_parameter = (double)(quantization*productor);
@@ -1145,7 +1146,6 @@ double MainWindow::quantizeNumber(double num)
     // converting back to double in metres
     double quantized_val = (double)(considered_val)/productor;
 
-    qDebug() << "Rounded: " << quantized_val;
 
     return quantized_val;
 }

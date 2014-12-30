@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <QDebug>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ private:
     double A2; // Y position of new coordinate system in relation to OPERATOR coordination system
 
     void convertToRadians(double angle); // converts the current angle to radians from degrees
+    double getDegrees(double angle); // returns degrees version of radians angle;
     void buildRotationMatrix();
     void buildNewSystemPositionMatrix();
     void buildOldCoordinatesMatrix();
